@@ -11,6 +11,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
+  res.render('signin');
+});
+
+app.post('/', function(req, res) {
+  res.render('signin');
+});
+
+app.get('/home', function(req, res) {
+  res.render('index');
+});
+
+app.post('/home', function(req, res){
   res.render('index');
 });
 
