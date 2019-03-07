@@ -1,0 +1,101 @@
+<% include template/headernav %>
+
+<h1 class="display-3 offset-1">Add Pond</h1>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-2">
+
+      <label for="pondName">Name</label><br>
+      <label for="deviceCode">Device Code</label><br>
+      <label>Pond Size</label><br>
+      <label for="width">Width</label><br>
+      <label for="height">Height</label><br>
+
+
+    </div>
+
+
+    <div class="col">
+
+
+      <input form="addpond" type="text" name="pondName" value="" placeholder="ex. crap"><br>
+      <input form="addpond" type="text" name="deviceCode" value="" placeholder="ex. 123redf478g"><br><br>
+      <input form="addpond" type="text" name="width" value="" placeholder="ex. 5"><br>
+      <input form="addpond" type="text" name="height" value="" placeholder="ex. 4"><br>
+
+
+    </div>
+
+    <div class="col">
+
+      <label>PH</label>
+      <input type="checkbox" name="phCheck" value=""><br>
+      <label>Upper</label>
+      <input form="addpond" type="text" name="upperPh" value="" placeholder="ex. 7"><br>
+      <label>Lower</label>
+      <input form="addpond" type="text" name="lowerPh" value="" placeholder="ex. 7"><br>
+      <label>Temperature</label>
+      <input type="checkbox" name="tempCheck" value=""><br>
+      <label>Upper</label>
+      <input form="addpond" type="text" name="upperTemp" value="" placeholder="ex. 50"><br>
+      <label>Lower</label>
+      <input form="addpond" type="text" name="lowerTemp" value="" placeholder="ex. 20">
+
+
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <form name="addPond" action="index.html" method="post">
+      <button type="submit" name="saveBtn">Save</button>
+      <button type="submit" name="cancelBtn">Cancel</button>
+    </form>
+  </div>
+
+</div>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col">
+
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<% include template/footer %>

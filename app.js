@@ -25,6 +25,14 @@ app.post('/home', function(req, res){
   res.render('index');
 });
 
+app.get('/notification', function(req, res){
+  res.render('notification');
+});
+
+app.get('/setting', function(req, res){
+  res.render('setting');
+});
+
 app.get('/phDetail/:phValue', function(req, res) {
   var phValue = req.params.phValue;
   //res.render('phDetail');
