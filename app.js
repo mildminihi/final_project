@@ -30,6 +30,7 @@ app.post('/api/ph', function(req, res){
   console.log(req.query.ph);
   var phValue = req.query.ph;
   res.send('success : ' + phValue);
+});
 
 app.get('/notification', function(req, res){
   res.render('notification');
@@ -46,7 +47,7 @@ app.post('/addPond', function(req, res) {
   else {
     res.render('home');
   }
-})
+});
 
 app.listen(3000, function() {
   console.log("Server are running on port 3000");
