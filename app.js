@@ -8,6 +8,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
   res.render('signin');
@@ -24,6 +25,11 @@ app.get('/home', function(req, res) {
 app.post('/home', function(req, res){
   res.render('index');
 });
+
+app.post('/api/ph', function(req, res){
+  console.log(req.query.ph);
+  var phValue = req.query.ph;
+  res.send('success : ' + phValue);
 
 app.get('/notification', function(req, res){
   res.render('notification');
@@ -42,16 +48,6 @@ app.post('/addPond', function(req, res) {
   }
 })
 
-app.get('/phDetail/:phValue', function(req, res) {
-  var phValue = req.params.phValue;
-  //res.render('phDetail');
-  res.render('phDetail', {phValue: phValue});
-});
-
-app.get('/phDetail', function(req, res) {
-  res.redirect("/phDetail");
-});
-
 app.listen(3000, function() {
   console.log("Server are running on port 3000");
-})
+});
