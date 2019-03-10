@@ -33,6 +33,15 @@ app.get('/setting', function(req, res){
   res.render('setting');
 });
 
+app.post('/addPond', function(req, res) {
+  if (req.body.saveBtn === "save") {
+    console.log(req.body);
+  }
+  else {
+    res.render('home');
+  }
+})
+
 app.get('/phDetail/:phValue', function(req, res) {
   var phValue = req.params.phValue;
   //res.render('phDetail');
