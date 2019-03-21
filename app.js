@@ -23,29 +23,28 @@ app.get('/home', function(req, res) {
   res.render('index');
 });
 
-app.post('/home', function(req, res){
+app.post('/home', function(req, res) {
   res.render('index');
 });
 
-app.post('/api/ph', function(req, res){
+app.post('/api/ph', function(req, res) {
   console.log(req.query.ph);
   var phValue = req.query.ph;
   res.send('success : ' + phValue);
 });
 
-app.get('/notification', function(req, res){
+app.get('/notification', function(req, res) {
   res.render('notification');
 });
 
-app.get('/setting', function(req, res){
+app.get('/setting', function(req, res) {
   res.render('setting');
 });
 
 app.post('/addPond', function(req, res) {
   if (req.body.saveBtn === "save") {
     console.log(req.body);
-  }
-  else {
+  } else {
     res.render('home');
   }
 });
@@ -53,7 +52,10 @@ app.post('/addPond', function(req, res) {
 app.get('/control', function(req, res) {
   var status = gamepadCotrol();
   scanGamepad();
-  res.render('control', {status: status});
+  res.json(getDirection());
+  // res.render('control', {
+  //   status: status
+  // });
 });
 
 app.listen(3000, function() {
@@ -65,8 +67,7 @@ function gamepadCotrol() {
   if (gamepad.numDevices() == "1") {
     status = "connected"
     return status;
-  }
-  else {
+  } else {
     return "Not connected"
   }
 }
@@ -74,27 +75,51 @@ function gamepadCotrol() {
 function scanGamepad() {
   setInterval(gamepad.processEvents, 16);
   setInterval(gamepad.detectDevices, 500);
+  var directionState = "stop";
   gamepad.on("up", function(id, num) {
     if (num == 5 || num == 6 || num == 7 || num == 8) {
-        console.log("Stop");
+      directionState = "stop";
+      direction[0].direction = directionState;
+      console.log(directionState);
     }
   });
   gamepad.on("down", function(id, num) {
     switch (num) {
       case 5:
-        console.log("forward");
+        directionState = "forward";
+        direction[0].direction = directionState;
+        console.log(directionState);
         break;
       case 6:
-        console.log("backward");
+        directionState = "backward";
+        direction[0].direction = directionState;
+        console.log(directionState);
         break;
       case 7:
-        console.log("turn left");
+        directionState = "left";
+        direction[0].direction = directionState;
+        console.log(directionState);
         break;
       case 8:
-        console.log("turn right");
+        directionState = "right";
+        direction[0].direction = directionState;
+        console.log(directionState);
         break;
       default:
-      console.log("Can't use this button");
+        directionState = "invalid button";
+        direction[0].direction = directionState;
+        console.log(directionState);
     }
   });
 }
+
+getDirection = function() {
+  return direction
+}
+
+
+var direction =
+{
+    "direction": "stop"
+}
+;
